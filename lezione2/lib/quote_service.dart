@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:http/http.dart' as http;
 
 
@@ -12,8 +13,10 @@ class QuoteService{
     });
 
     final data = jsonDecode(res.body) as Map<String, dynamic>;
-
-    print(data['docs'][13]['dialog']);
+    var min = 0;
+    var max = 50;
+    var index = 0 + Random(). nextInt((max + 1) - min);
+    print(data['docs'][index]['dialog']);
   }
 
   void getQuoteCharacter(String? token, String characterid) async {
